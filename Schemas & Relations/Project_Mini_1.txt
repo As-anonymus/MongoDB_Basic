@@ -1,0 +1,39 @@
+------------*Small Blog Mini Project demonstarating Schemas&Relations*----------
+
+
+> use blog
+switched to db blog
+> db.users.insertMany([{name: "Max Sch",age:29,email:"max@mail.com"},{name:"Aditya S",age:20,email:"adi@mail.com"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6215284d60218d6de52523b7"),
+                ObjectId("6215284d60218d6de52523b8")
+        ]
+}
+> db.posts.insertOne({title:"My First Post!",text:"This is my first post !",tag:["new","tech"],creator:ObjectId("6215284d60218d6de52523b7"),comments:[{text:"I like this post!",author: ObjectId("6215284d60218d6de52523b8")}]})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("6215293960218d6de52523b9")
+}
+> db.posts.findOne()
+{
+        "_id" : ObjectId("6215293960218d6de52523b9"),
+        "title" : "My First Post!",
+        "text" : "This is my first post !",
+        "tag" : [
+                "new",
+                "tech"
+        ],
+        "creator" : ObjectId("6215284d60218d6de52523b7"),
+        "comments" : [
+                {
+                        "text" : "I like this post!",
+                        "author" : ObjectId("6215284d60218d6de52523b8")
+                }
+        ]
+}
+>
+
+
+
