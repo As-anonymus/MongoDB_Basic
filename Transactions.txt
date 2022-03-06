@@ -1,0 +1,13 @@
+const session = db.getMongo().startSession()
+
+const usersC = session.getDatabase("blog").users
+
+const postsC = session.getDatabase("blog").posts
+
+session.startTransaction()
+
+usersC.deleteOne({_id:ObjectId("62206be146ae1ed445f7a016")})
+
+postsC.deleteMany({userId:ObjectId("62206be146ae1ed445f7a016")})
+
+session.commitTransaction()
